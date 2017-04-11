@@ -1,0 +1,83 @@
+# CSS - Motion
+
+## Lesson Objectives
+
+1. Explain the roles in traditional animation and how they apply to computer animation
+1. Create basic transitions between a start and end state in CSS
+1. Write complex animations with multiple states
+
+
+## Explain the roles in traditional animation and how they apply to computer animation
+
+1. In traditional (hand-drawn) animation, there were two kinds of animators
+	- Keyframe artist
+		- Draws the main frames for the animation
+	- Inbetweener  (tweener)
+		- Fills in the frames between each keyframe so it looks fluid
+1. In computer animation, we act as the keyframe artist, and the computer is the tweener.
+
+## Create basic transitions between a start and end state in CSS
+
+Define a start state and an end state
+
+```css
+a {
+	background:yellow; /* start state */
+}
+a:hover {
+	background:green; /* end state */
+}
+```
+
+Three main properties:
+
+- `transition-property: background, left, top, height;`
+- `transition-duration: 0.5s;`
+- `transition-timing-function: ease;`
+	- ease
+	- linear
+	- ease-in
+	- ease-out
+	- ease-in-out
+	- cubic-bezier(n,n,n,n)
+- `transition-delay: 1s;`
+
+Shorthand
+- `transition: <property> <duration> <timing-function> <delay>`
+
+## Write complex animations with multiple states
+
+Transitions are great for going from one state to another, but sometimes you need more than a start and end state.  To do this, there are two steps
+
+1. Create a named animation with a set of keyframes.
+	```css
+	@keyframes example {
+	    0%   {background-color:red; left:0px; top:0px;}
+	    25%  {background-color:yellow; left:200px; top:0px;}
+	    50%  {background-color:blue; left:200px; top:200px;}
+	    75%  {background-color:green; left:0px; top:200px;}
+	    100% {background-color:red; left:0px; top:0px;}
+	}
+	```
+
+1. Assign the animation to a rule and give it a duration
+	```css
+	div {
+	    width: 100px;
+	    height: 100px;
+	    background-color: red;
+	    position: relative;
+	    animation-name: example;
+	    animation-duration: 4s;
+	}
+	```
+1. Additional properties
+	- animation-timing-function
+	- animation-iteration-count (can be set to infinite)
+	- animation-direction
+		- reverse
+		- alternate
+	- animation-delay
+	- animation-play-state
+		- paused
+		- running

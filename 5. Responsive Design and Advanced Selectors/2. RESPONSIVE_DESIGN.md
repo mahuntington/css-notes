@@ -1,0 +1,79 @@
+# CSS - Responsive Design
+
+## Lesson Objectives
+
+1. Explain responsiveness and why we need it
+1. Describe fluid layout
+1. Describe the "mobile first" development process
+1. Explain min/max-height/width
+1. Define media queries and why we need them
+
+## Explain responsiveness
+
+### The Backstory
+
+The Phone/Tablet/Phablet wars.  Apple, Google, Samsung and a bunch of other companies all released a bunch of devices, all with various dimensions.
+
+Initially, we would test to determine which device was viewing the site, and then serve up different content based on that.  This was called adaptive.
+
+### Now
+
+Soon there were too many devices to examine and too much different code to write, so we decided to serve the same content to all devices, but modify it slightly so that it still looks good.  This is called responsive.
+
+In responsive, the *content* responds to device attributes
+
+- width
+- height
+- orientation
+- media
+
+### Methods to achieve this
+
+- fluid layout
+- mobile first
+- min/max-height-width
+- media queries
+
+## Describe Fluid Layout
+
+Layout using percentages so that content shrinks and expands with window dimensions
+
+## Describe the "mobile first" development process
+
+1. Term is mostly used for designers
+	- use https://generalassemb.ly/
+1. Also applies to developers
+	- start by developing mobile and move upward
+	- don't go desktop to mobile
+
+## Explain min/max-height/width
+
+1. max-width/height
+1. min-width/height
+	- **EXAMPLE** nav when squished
+		- keep item text on one line
+		- combine min-width with percentage
+
+## Define media queries and why we need them
+
+1. media query possibilites
+	- http://www.w3schools.com/cssref/css3_pr_mediaquery.asp
+	- media types
+		- screen
+		- print
+		- tv
+	- media features
+		- min-width
+		- max-width
+		- min-height
+		- max-height
+		- orientation
+		- resolution
+1. mobile first with media queries
+	- mobile devices typically slower
+	- will read mobile css and discard larger device css
+	- larger devices will read mobile data and overwrite
+		- this is okay since they're faster
+	- could also have media queries for small devices too
+		- fine, but can get complex with lots of media queries
+		- can scan and assume existing queries are only for large devices

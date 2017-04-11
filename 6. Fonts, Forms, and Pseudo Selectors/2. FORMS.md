@@ -1,0 +1,109 @@
+# HTML - forms
+
+## Lesson Objectives
+
+1. Explain what a form is
+1. Use a form tag to set up an interactive space
+1. Use an input element to give the user a place to enter data
+1. Use a textarea element to give the user a place to enter large text blocks
+1. Use a select element, in conjunction with option elements to create a dropdown
+1. Use a label to create a clickable space which will also affect a specified input
+
+## Explain what a form is
+
+A form is a set of fields with which users interact.  Data is often gathered from these fields.
+
+## Use a form tag to set up an interactive space
+
+Container tag for a form.  Has the following attributes, which we don't need to use right now
+
+1. action
+1. method
+
+## Use an input element to give the user a place to enter data
+
+Input tags are the most basic and most common way to enter small chunks of data.  They have the following attributes:
+
+- name
+	- used by the server to create a property with the given name
+- value
+	- set an initial value for the input
+- type
+	- button
+		- Defines a clickable button (mostly used with a JavaScript to activate a script)
+	- checkbox
+		- Defines a checkbox
+	- color
+		- Defines a color picker
+	- date
+		- Defines a date control (year, month and day (no time))
+	- datetime-local
+		- Defines a date and time control (year, month, day, hour, minute, second, and fraction of a second (no time zone)
+	- email
+		- Defines a field for an e-mail address
+	- file
+		- Defines a file-select field and a "Browse..." button (for file uploads)
+	- hidden
+		- Defines a hidden input field
+		- used on the back end
+	- image
+		- Defines an image as the submit button
+	- month
+		- Defines a month and year control (no time zone)
+	- number
+		- Defines a field for entering a number
+	- password
+		- Defines a password field (characters are masked)
+	- radio
+		- Defines a radio button
+		- A set of radio buttons must all have the same name attribute
+	- range
+		- Defines a control for entering a number whose exact value is not important (like a slider control)
+	- reset
+		- Defines a reset button (resets all form values to default values)
+	- search
+		- Defines a text field for entering a search string
+	- submit
+		- Defines a submit button
+	- tel
+		- Defines a field for entering a telephone number
+	- text
+		- Default. Defines a single-line text field (default width is 20 characters)
+	- time
+		- Defines a control for entering a time (no time zone)
+	- url
+		- Defines a field for entering a URL
+	- week
+		- Defines a week and year control (no time zone)
+- checked
+	- set a check box to be checked initially
+	- for a collection of radio buttons, set which one is selected initially
+- disabled
+	- prevent a user from interacting with an input
+- maxlength
+	- set the maximum length of an inputs value
+- placeholder
+	- some placeholder text
+	- used to prompt the user or explain the input's purpose
+
+## Use a textarea element to give the user a place to enter large text blocks
+
+Contains large chunks of text
+
+## Use a select element, in conjunction with option elements to create a dropdown
+
+- `select` element
+	- tag containing many `option` elements
+	- set the `name` attribute here
+- `option` element
+	- `selected` attribute sets which option is initially selected from the dropdown
+	- `value` attribute will be the value of the `select` dropdown as a whole.
+	- Can have content which is different from `value` attribute
+		- allows you to be more verbose for the user
+
+## Use a label to create a clickable space which will also affect a specified input
+
+- Creates an interactive element for users to click on
+- This will affect a checkbox/radio button with an `id` that matches the label's `for` attribute value
+- Can do some neat things with CSS, labels, and form elements (e.g. CSS only carousels)
+	- https://css-tricks.com/the-checkbox-hack/

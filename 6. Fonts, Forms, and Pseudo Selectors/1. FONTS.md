@@ -1,0 +1,183 @@
+# CSS - Typography, Icons
+
+## Lesson Objectives
+
+1. Explain how to load fonts into your website
+1. Explain what a sprite sheet is and why we use it
+1. Explain what an icon font is and what its advantages are
+1. Explain what SVG stands for, what it is, and what its advantages are
+
+## Explain how to load fonts into your website
+
+1. Up until recently, fonts on the web were limited to what was installed on a computer
+1. You could only depend on users having "System" fonts that were installed on every machine by default
+1. Now you can load fonts into your website so each user doesn't have to install them manually
+
+### Use a font-file
+
+1. You or a designer can download or create actual font files and then reference them in your css files.
+1. Good sites:
+	- https://www.fontsquirrel.com/
+	- http://www.myfonts.com/
+	- https://typekit.com/
+
+```
+@font-face {
+	font-family: 'MyWebFont'; /* specify how you want the font to be referenced in the font-family property */
+	src: url('fonts/Architects_Daughter/ArchitectsDaughter.ttf'); /* location of the font file */
+}
+html {
+	font-family: 'MyWebFont'; /* call the web font */
+}
+```
+
+### Use a link to a CSS file
+
+1. Some font sites will give you the css file already, so you don't have to download the font files themselves
+	- https://www.google.com/fonts
+
+## Explain what a sprite sheet is and why we use it
+
+### What and why
+
+Most developers use sprite sheets instead of individual images for each of their icons.
+
+1. Making many HTTP requests for many small files is slower than downloading and processing one large file.
+1. Your browser will cache (save locally) the image
+	- If you visit a different page with different icons from the same sprite sheet, the image is already available and loads from memory, not the server.
+
+### How
+
+1. Create a tag with `background-image:url()`, `background-position-x`, `background-position-y`, `width`, `height`;
+1. use an `img` tag inside another tag with a specific `width`, `height`, `position:relative`, and `overflow: hidden;`.  Move the `img` around with `top`, `left`, and `position:absolute`
+
+## Explain what an icon font is and what its advantages are
+
+1. Sprite sheets have fixed size icons.  You can make the icons bigger, but they can end up looking pixelated
+1. If you want the same icon in a different color (perhaps each page has a different color theme) you have to add a new image to the sprite sheet.
+1. Icon fonts are just fonts, but instead of looking like letters, each "character" looks like an icon.
+
+### http://fontello.com/
+
+1. Using the font's characters
+	1. Fontello goes one extra step by assigning icon shapes to unprintable characters in case you want to use that font for normal characters.
+		1. Behind the scenes, traditional characters are stored as numbers.
+		1. There are lots of other unusual characters that most developers never use (bells, weird whitespace characters, foreign characters).
+		1. http://unicode-table.com/en/
+	1. Go to the "Customize Codes" tab
+	1. You'll see above the icon is a box
+		- this represents an unprintable character
+	1. Below the icon is the character's Unicode value (a four digit hexadecimal number)
+	1. You can represent this character in two ways
+		1. inside your HTML: `&#xE800;` (E800 is the 4 digit hex value)
+		1. inside your CSS: `selector:after/before { content: '\E800' };`
+			- you can insert content using CSS
+	1. You could also change the character to be normal character
+1. You can use their css and give your html classes
+
+## Demonstrate how to make icons using SVG
+
+1. Icon fonts can only be one color
+1. SVG can be styled just like CSS
+
+### Many ways to add SVG to your page
+
+1. One external image
+	- Can't restyle
+	- Hover, etc doesn't work
+	```css
+		img {
+			width: 200px;
+			height: 200px;
+		}
+	```
+	```html
+	<img src="img.svg" />
+	```
+	```html
+	<svg xmlns="http://www.w3.org/2000/svg">
+		<style>
+			#checkmark {
+				fill: red;
+			}
+			#checkmark:hover {
+				fill: blue;
+			}
+			circle {
+				stroke: #006600;
+				fill  : #00cc00;
+			}
+			circle:hover {
+				stroke: darkblue;
+				fill  : lightblue;
+			}
+		</style>
+		<path id="checkmark" d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
+		<circle cx="40" cy="40" r="24" />
+	</svg>
+	```
+
+1. Write SVG directly into HTML
+
+	```html
+	<svg xmlns="http://www.w3.org/2000/svg">
+		<path id="checkmark" d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
+		<circle cx="40" cy="40" r="24" />
+	</svg>
+	```
+	```css
+	svg {
+		width: 200px;
+		height: 200px;
+	}
+	#checkmark {
+	  fill: red;
+	}
+	#checkmark:hover {
+	  fill: blue;
+	}
+	circle {
+	  stroke: #006600;
+	  fill  : #00cc00;
+	}
+	circle:hover {
+	  stroke: darkblue;
+	  fill  : lightblue;
+	}
+	```
+
+1. External CSS/External image
+	- Each differently styled element must be included and given id
+
+	```html
+	<svg>
+		<use id="checkmark" xlink:href="img.svg#checkmark"></use>
+		<use id="circle" xlink:href="img.svg#thecircle"></use>
+	</svg>
+	```
+	```html
+	<svg xmlns="http://www.w3.org/2000/svg">
+		<path id="checkmark" d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
+		<circle id="thecircle" cx="40" cy="40" r="24" />
+	</svg>
+	```
+	```css
+	svg {
+		width: 200px;
+		height: 200px;
+	}
+	#checkmark {
+		fill: red;
+	}
+	#checkmark:hover {
+		fill: blue;
+	}
+	#circle {
+		stroke: #006600;
+		fill  : #00cc00;
+	}
+	#circle:hover {
+		stroke: darkblue;
+		fill  : lightblue;
+	}
+	```

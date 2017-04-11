@@ -1,0 +1,53 @@
+# CSS - Transform
+
+## Lesson Objectives
+
+1. Use the CSS3 transform property to visually manipulate DOM elements in a 2D space
+1. Use the CSS3 transform property to visually manipulate DOM elements in a 3D space
+1. Explain why using transform for animation is better than using position
+
+## Use the CSS3 transform property to visually manipulate DOM elements in a 2D space
+
+1. transform:rotate(10deg);
+1. transform:scale(1.1);
+1. transform:translateX(10px);
+1. transform:skewX(45deg);
+
+You can perform multiple transforms in one statement
+
+1. transform: scale(2) skewY(0.3) rotate(4deg);
+
+## Use the CSS3 transform property to visually manipulate DOM elements in a 3D space
+
+The Z axis extends out of the screen
+
+1. rotateX();
+1. rotateY();
+1. rotateZ();
+1. translateX();
+1. translateY();
+1. translateZ();
+1. scaleX();
+1. scaleY();
+1. scaleZ();
+
+If you know the math, you can write your own transformation matrix
+	- This is how transformations work behind the scenes
+
+1. matrix(n,n,n,n,n,n)
+1. matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)
+1. http://periodic.famo.us/
+
+## Explain why using transform for animation is better than using position
+
+- http://codepen.io/paulirish/pen/nkwKs
+	- top/left
+- http://codepen.io/paulirish/pen/LsxyF
+	- translate
+
+Transforms are better for animation for two reasons
+
+1. When elements are changed in the DOM, the browser checks to see if other elements are being pushed around.  When using transforms, the browser doesn't do this.
+1. If you're doing a 3D transform, the computer's GPU is engaged, which is really fast
+
+Example: `transition: transform 1s ease-in-out;`
