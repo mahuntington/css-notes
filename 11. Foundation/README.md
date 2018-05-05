@@ -7,7 +7,6 @@
 1. Use some common Foundation elements
 1. Build Foundation using the CLI
 
-
 ## Describe what Foundation is
 ## Download Foundation
 ## Use some common Foundation elements
