@@ -125,6 +125,15 @@ var Car = function () {
 
 That's a spicy meatball!
 
+If you want, you can adjust `package.json` to re-compile every time you make a change:
+
+```
+"scripts": {
+  "build": "babel --watch --presets es2015 test.js -o compiled.js"
+},
+```
+
+
 ## IIFE
 
 Normally, variable declarations, are "hoisted" up to the top of whatever function they are declared in (or global if no function exists).  This can lead to some weird moments:
