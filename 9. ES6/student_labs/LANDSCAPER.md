@@ -1,6 +1,13 @@
 # Landscaper Game
 
-Create a browser-based javascript app that simulates the following using `alert()` and `prompt()` to send messages to and get input from the user
+**TWO OPTIONS**
+
+1. Create a browser-based javascript app that simulates the following using `alert()` and `prompt()` to send messages to and get input from the user
+1. Create a terminal-based javascript app that simulates the following using `console.log()` and the [prompt-sync](https://www.npmjs.com/package/prompt-sync) package to get user input.
+
+Use as much ES6 as possible.
+
+## Game Flow
 
 1. You are starting a landscaping business, but all you have are your teeth.
 1. Using just your teeth, you can spend the day cutting lawns and make $1.  You can do this as much as you want.
