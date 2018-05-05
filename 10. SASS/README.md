@@ -2,6 +2,7 @@
 
 ## Lesson Objectives
 
+1. Describe what SASS is
 1. Install SASS
 1. Save values in variables
 1. Nest rules inside each other
@@ -10,6 +11,10 @@
 1. Create a mixin
 1. Have rules inherit values
 1. Use Operators
+
+## Describe what SASS is
+
+SASS stands for Syntactically Awesome Style Sheets.  It's a transpiler, much like Babel is for ES6.  It takes SASS syntax and turns it into CSS.  It basically adds additional functionality to CSS that isn't available by default.
 
 ## Install SASS
 
