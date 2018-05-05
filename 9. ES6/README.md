@@ -69,6 +69,62 @@ Now! But it depends where. Node.js supports most/nearly all new things. [Chrome,
 
  ![babel repl](https://i.imgur.com/SKLMkIU.png)
 
+ You can also run babel from within the command line, but most often it's used a build tool like [webpack](https://webpack.js.org/).  First install:
+
+ ```
+ npm init
+ npm install babel-cli
+ npm install babel-preset-es2015
+ ```
+
+ Now in your `package.json` add this into `"scripts"`:
+
+ ```
+ "scripts": {
+   "build": "babel --presets es2015 test.js -o compiled.js"
+ },
+ ```
+
+Now create a `test.js` file:
+
+```
+touch test.js
+```
+
+In it, write some ES6:
+
+```JavaScript
+class Car {
+    run(){
+    }
+}
+```
+
+Now run `npm run build` and take a look at compiled.js:
+
+```JavaScript
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Car = function () {
+	function Car() {
+		_classCallCheck(this, Car);
+	}
+
+	_createClass(Car, [{
+		key: "run",
+		value: function run() {}
+	}]);
+
+	return Car;
+}();
+```
+
+That's a spicy meatball!
+
 ## IIFE
 
 Normally, variable declarations, are "hoisted" up to the top of whatever function they are declared in (or global if no function exists).  This can lead to some weird moments:
