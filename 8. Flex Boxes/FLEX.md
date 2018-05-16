@@ -49,7 +49,7 @@ Up until now, CSS has been more difficult than it should be for certain tasks (v
 	- column: vertically (up to down)
 	- column-reverse: reverse vertical (down to up)
 1. justify-content: (flex-start | flex-end | center | space-between | space-around);
-	- Horizontally aligns the flex items when the items do not use all available space on the main-axis
+	- Horizontally (assuming row/row-reverse) aligns the flex items when the items do not use all available space on the main-axis
 	- values
 		- flex-start: start of main axis
 		- flex-end: end of main axis
@@ -85,9 +85,9 @@ Up until now, CSS has been more difficult than it should be for certain tasks (v
 	- higher numbers come last
 1. flex-grow: <number>;
 	- This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.
-	- If all items have flex-grow set to 1, the remaining space in the container will be distributed equally to all children. If one of the children a value of 2, the remaining space would take up twice as much space as the others (or it will try to, at least).
+	- If all items have flex-grow set to 1, the remaining space in the container will be distributed equally to all children. If one of the children has a value of 2, it would take up twice as much remaining space as the others (or it will try to, at least).
 1. flex-basis: <length> | auto;
-	- can specify the width of an element before it is resized use flex-grow/shrink
+	- can specify the width of an element before it is resized using flex-grow/shrink
 	- if all elements have flex-basis set to 0 and flex-grow set to the same value, all elements will be the same width
 1. flex-shrink: <number>;
 	- defines the ability of an item to shrink
