@@ -49,3 +49,7 @@ The `calc` property is used when you want to combine two units of measure togeth
 
 Example:
 If you have a fixed width element (e.g. a logo) in line with an element that has a % width
+
+```css
+width: calc(100% - 200px);
+```
