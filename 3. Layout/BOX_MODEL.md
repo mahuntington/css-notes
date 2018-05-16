@@ -72,7 +72,7 @@ An element can be placed on the page in many ways using the `display` property
 	- width defaults to 100%
 1. inline
 	- the element is placed on the same line as its other inline siblings
-	- width defaults to with width of the content
+	- width defaults to the width of the content
 	- width and height properties are ignored
 	- only horizontal margin and padding are respected (not top/bottom margin/padding)
 		- text must flow normally on the next line in a paragraph
@@ -128,6 +128,7 @@ Sometimes we do want elements to overlay each other.  In this case we can use th
 	- use % widths on images
 1. using spacing in ems
 	- if a user increases the font size in their browser, using pixels for spacing can be problematic
+		- e.g. padding will not scale in proportion to the text size.  Will look like you have big text and small padding
 	- Use ems instead so that elements scale properly
 1. using ems and rems
 	- can define a font-size for a "module" on the page using rems
