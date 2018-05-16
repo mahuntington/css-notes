@@ -25,7 +25,7 @@ This is a unit of measure, like px, %, em, etc
 	- the issue is that text might be too big for small height screens
 	- can have font-size change with width of screen (or any other dimension)
 1. imagine you have a scrolling page filled with cards
-	- cards should fill the screen
+	- each card should fill the screen
 1. div that must maintain same W x H ratio for any screen width
 	- a chess board
 
