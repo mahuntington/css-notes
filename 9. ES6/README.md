@@ -163,7 +163,7 @@ IIFE - Immediately Invoked Function Expression - often used to create a block of
 ```JavaScript
 var a = 2;
 
-(function IIFE(){
+(function(){
     var a = 4;
     console.log ('Inside the IFFE, the value of a is', a ); //"Inside the IFFE, the value of a is 4"
 })();
