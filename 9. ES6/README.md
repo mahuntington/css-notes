@@ -381,25 +381,22 @@ for(let element of array){
 When creating a constructor and you wanted a default value, you previously had to write something like this:
 
 ```JavaScript
-function Beverage( type ){
-    this.type = type || "water";
+var multBy2 = function(value){
+    var defaultValue = (value)?value:0;
+    return defaultValue * 2
 }
-var breakfast = new Beverage();
-var breakfast2 = new Beverage( 'beer' );
-console.log ( breakfast );
-console.log ( breakfast2 );
+
+console.log(multBy2());
 ```
 
 Now you can do this in ES6
 
 ```JavaScript
-function Beverage ( type = 'sparkling water' ){
-  this.type = type;
+var multBy2 = function(value = 0){
+    return value * 2
 }
-var breakfast = new Beverage();
-var breakfast2 = new Beverage( 'rocket fuel' );
-console.log ( breakfast );
-console.log ( breakfast2 );
+
+console.log(multBy2());
 ```
 
 ## Array.isArray()
