@@ -283,54 +283,34 @@ console.log('ES6 square:',squareES6(6));
 
 ### Binding
 
-Here is an example of the arrow function binding this
+with callbacks, this can get redefined:
 
 ```JavaScript
-// Create constructor function, inputs name, has default friend values
-function Person ( name , friends = ["Charlie", "Dennis", "Ron", "Sweet Dee", "Frank"]){
+function Person(name){
     this.name = name;
-    this.friends = friends;
-
-    //Add four methods:
-
-    // The first, `secret Admirer`, `this.name` is undefined in the forEach function
-    this.secretAdmirer = function (){
-        this.friends.forEach(function ( f ){
-            console.log( this.name + " sends flowers to " + f );
-        });
-    }
-
-    //The second one is the way we got around the issue of `this` - which was to set the desired `this` to a variable called `that` or `self` or something similar:
-
-    this.giveOldSchoolLove = function (){
-        var self = this;
-        this.friends.forEach(function ( f ){
-            console.log( self.name + " likes " + f );
-        });
-    }
-
-    // we could also use .bind()
-    this.giveBindingAffection = function (){
-        this.friends.forEach(function ( f ){
-            console.log( this.name + " makes friendship bracelets for " + f )
-        }.bind(this));
-    }
-
-    //Finally, by using the arrow function, `this` is already bound:
-
-    this.giveNewSchoolLove = function (){
-        this.friends.forEach(f => console.log( this.name + " hearts " + f ));
+    this.logName = function(){
+        setTimeout(function(){
+            console.log(this.name);
+        },500)
     }
 }
+var me = new Person('Matt');
+me.logName();
+```
 
-//See examples
-k = new Person ( "Matt" );
-console.log( 'Secret Admirer:' );
-k.secretAdmirer();
-console.log( 'Show old school love:' );
-k.giveOldSchoolLove();
-console.log( 'Show new school love:' );
-k.giveNewSchoolLove();
+arrow functions fix this:
+
+```javascript
+function Person(name){
+    this.name = name;
+    this.logName = function(){
+        setTimeout(()=>{
+            console.log(this.name);
+        },500)
+    }
+}
+var me = new Person('Matt');
+me.logName();
 ```
 
 ## Support for Classes
