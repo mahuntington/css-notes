@@ -283,7 +283,7 @@ console.log('ES6 square:',squareES6(6));
 
 ### Binding
 
-with callbacks, this can get redefined:
+with callbacks, `this` can get redefined:
 
 ```JavaScript
 function Person(name){
