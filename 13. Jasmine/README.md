@@ -13,9 +13,9 @@ module.exports = (value) => {
 
 test.js:
 ```javascript
-const multBy2 = require('./module.js');
+const multBy2 = require('./multBy2.js');
 
-describe("multBy2 test suite", function(){
+describe("multBy2", function(){
     it("should multiply a value by 2", function(){
         expect(multBy2(2)).toBe(4)
     })
@@ -26,5 +26,5 @@ describe("multBy2 test suite", function(){
 ```
 
 ```
-jasmine test.js 
+jasmine test.js
 ```
