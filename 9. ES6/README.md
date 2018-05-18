@@ -500,7 +500,7 @@ function yell(value){
     return value.toUpperCase();
 }
 
-console.log (`Hello ${yell(`${name}`)}!`);
+console.log (`Hello ${yell(name)}!`);
 ```
 
 Multiple lines used to suck:
