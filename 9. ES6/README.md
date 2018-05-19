@@ -648,19 +648,6 @@ console.log(a); // 3
 console.log(b); // 5
 ```
 
-Use this for default options arguments:
-
-```JavaScript
-function drawES2015Chart({size = 'big', cords = {x: 0, y: 0}, radius = 25} = {}) {
-    console.log(size, cords, radius);
-}
-
-drawES2015Chart({
-    cords: {x: 18, y: 30},
-    radius: 30
-});
-```
-
 You can pull values from a function argument that's an object:
 
 ```JavaScript
@@ -678,6 +665,19 @@ function userId({id}) {
 }
 
 console.log('userId: ' + userId(user)); // "userId: 42"
+```
+
+Use this for default options arguments:
+
+```JavaScript
+function drawES2015Chart({size = 'big', cords = {x: 0, y: 0}, radius = 25} = {}) {
+    console.log(size, cords, radius);
+}
+
+drawES2015Chart({
+    cords: {x: 18, y: 30},
+    radius: 30
+});
 ```
 
 If you have a property name which is not a valid variable name, you can reassign it:
