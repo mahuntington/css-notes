@@ -17,11 +17,14 @@
 1. Array.isArray()
 1. argument object
 1. spread and rest operators
+1. Trailing commas
 1. Template Literals
 1. Object literal extensions
 1. Destructuring
 1. swap (desconstucturing method)
-
+1. Merge objects
+1. Array functions
+1. Asynchronous programming
 <!--  other options:
 
 1. symbols
@@ -317,6 +320,9 @@ me.logName();
 
 ```JavaScript
 class Cat {
+    static getTypes(){
+        return ['large', 'small'];
+    }
     constructor(name) {
         this.name = name;
     }
@@ -345,6 +351,28 @@ var myLion = new Lion("Simba");
 console.log(myLion.makesNoises());
 console.log(myLion.purrs());
 console.log(myLion.eatHuman());
+
+console.log(Cat.getTypes());
+```
+
+This makes inheritance much easier than how it used to be:
+
+```javascript
+var Person = function(){
+    this.greet = function(){
+        console.log('oh hai!');
+    }
+}
+
+var SuperHero = function(){
+    Person.call(this)
+    this.fly = function(){
+        console.log('up, up, and away!');
+    }
+}
+SuperHero.prototype = Object.create(Person.prototype);
+SuperHero.prototype.constructor = SuperHero;
+superman.greet();
 ```
 
 ## for...of
@@ -471,6 +499,45 @@ function returnOnlyNums(...arrayParam){
 }
 
 console.log( returnOnlyNums(44, false, 'pizza', 45, {season: "winter"}, [1,2,3,4,5,], 2, 9) ); // [ 44, 45, 2, 9 ]
+```
+
+## Trailing commas
+
+You can add trailing commas to make copy/paste easier later on:
+
+```javascript
+var arr = [
+  1,
+  2,
+  3, //the comma here will not cause issues
+];
+
+console.log(arr);
+```
+
+If you have multiple commas, it will create holes in the array:
+
+```javascript
+var arr = [
+  1,
+  2,
+  3,,,,
+];
+
+console.log(arr);
+console.log(arr.length); //logs 6
+```
+
+Trailing commas are okay in objects too:
+
+```javascript
+var object = {
+  foo: "bar",
+  baz: "qwerty",
+  age: 42,
+};
+
+console.log(object);
 ```
 
 ## Template Literals (String Interpolation)
@@ -721,4 +788,106 @@ var y = false;
 [x,y] = [y,x];
 
 console.log(x,y);
+```
+
+## Merge objects
+
+You can use `Object.assign()` to merge properties of two or more objects:
+
+```javascript
+var a = {
+    foo:'bar'
+}
+
+var b = {
+    awesome:true
+}
+
+Object.assign(a, b);
+
+console.log(a);
+```
+
+This is extremely useful when you need to create a brand new object that is a clone of another one with some minor changes (happens all the time with Redux):
+
+```javascript
+var bob = {
+    name:'Bob',
+    age: 42
+}
+
+var sally = Object.assign({}, bob, {name:'Sally'})
+
+console.log(sally);
+```
+
+## Array functions
+
+There are a bunch of cool new array helper functions:
+
+```javascript
+var nums = [1,3,5,7,8];
+var largeNums = nums.filter(function(currentNum){
+    return currentNum > 5
+});
+console.log(largeNums);
+
+var sum = nums.reduce(function(accumulatedValue, currentNum){
+    return accumulatedValue + currentNum;
+});
+console.log(sum);
+
+var doubledValues = nums.map(function(currentNum){
+    return currentNum * 2;
+})
+console.log(doubledValues);
+
+var found = nums.find(function(currentNum) {
+  return currentNum > 5;
+});
+console.log(found);
+
+var found = nums.findIndex(function(currentNum) {
+  return currentNum > 5;
+});
+console.log(found);
+
+var doesFiveExist = nums.includes(5);
+console.log(doesFiveExist);
+
+var doubleArray = nums.concat(nums);
+console.log(doubleArray);
+
+var section = nums.slice(2,4)
+console.log(section);
+```
+
+## Asynchronous programming
+
+Asynchronous programming used to be filled with nested callbacks and promises:
+
+```javascript
+fetch('http://www.omdbapi.com/?apikey=53aa2cd6&s=Star').then(function(response){
+    response.json().then(function(searchData){
+        fetch('http://www.omdbapi.com/?apikey=53aa2cd6&t='+searchData.Search[0].Title).then(function(response){
+            //NOTE: this function is a closure, so we could still reference searchData
+            response.json().then(function(titleData){
+                console.log(titleData);
+            });
+        });
+    })
+})
+```
+
+But now using Aync/Await, we can make our code much easier to read:
+
+```javascript
+var getData = async function(){
+    var searchResponse = await fetch('http://www.omdbapi.com/?apikey=53aa2cd6&s=Star');
+    var searchData = await searchResponse.json();
+    var titleResponse = await fetch('http://www.omdbapi.com/?apikey=53aa2cd6&t=' + searchData.Search[0].Title);
+    var titleData = await titleResponse.json();
+    console.log(titleData);
+}
+getData();
 ```
