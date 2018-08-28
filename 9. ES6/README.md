@@ -68,7 +68,7 @@ An example Polyfill:
 
 ## babel/transpiling
 
-Now! But it depends where. Node.js supports most/nearly all new things. [Chrome, Firefox, Edge, and Safari have been keeping up well](http://caniuse.com/#search=es6). But new features are being added and tested. To be sure that code will run across many platforms (never forget the people who still use IE8), many people have come to rely on transpilers/compilers. Transpilers/Compilers take 'dialects' of standard code (incuding ES6, coffeescript, typescript and more) and convert the code for you. A popular one for ES6 is [Babel](https://babeljs.io/), they have both repl (Read, Evaluate, Print, Loop) and an npm module/gem.
+Node.js supports most/nearly all new things. [Chrome, Firefox, Edge, and Safari have been keeping up well](http://caniuse.com/#search=es6). But new features are being added and tested. To be sure that code will run across many platforms (never forget the people who still use IE8), many people have come to rely on transpilers/compilers. Transpilers/Compilers take 'dialects' of standard code (incuding ES6, coffeescript, typescript and more) and convert the code for you. A popular one for ES6 is [Babel](https://babeljs.io/), they have both repl (Read, Evaluate, Print, Loop) and an npm module/gem.
 
  ![babel repl](https://i.imgur.com/SKLMkIU.png)
 
@@ -191,14 +191,14 @@ for(var i=0; i<5; i++){
 A new way to get block level scoping is with the keyword let, and the use of `{}` as in any `{}`, not just tied to a function! Note: `let` is NOT meant to completely replace `var`!
 
 ```JavaScript
-var a = 2
+let a = 2
 
 {
     let a = 4
-    console.log( 'the value of b inside the `{}` is', a); //"block level scope"
+    console.log( 'the value of a inside the `{}` is', a); //"block level scope"
 }
 
-console.log ('the value of b outside of the `{}` is', a) //"global scope"
+console.log ('the value of a outside of the `{}` is', a) //"global scope"
 ```
 
 And now the loop with setTimeout:
@@ -327,16 +327,16 @@ class Cat {
         this.name = name;
     }
     makesNoises() {
-        return (this.name + 'meows');
+        return this.name + ' meows';
     }
     purrs(){
-        return (this.name + 'purrs');
+        return this.name + ' purrs';
     }
 }
 
 class Lion extends Cat {
     makesNoises() {
-        return (this.name + 'roars!');
+        return this.name + ' roars!';
     }
     eatHuman(){
         return 'yum';
@@ -365,13 +365,16 @@ var Person = function(){
 }
 
 var SuperHero = function(){
-    Person.call(this)
+    Person.call(this);
     this.fly = function(){
-        console.log('up, up, and away!');
+        console.log('up up and away!');
     }
 }
 SuperHero.prototype = Object.create(Person.prototype);
 SuperHero.prototype.constructor = SuperHero;
+
+var superman = new SuperHero()
+superman.fly();
 superman.greet();
 ```
 
@@ -406,7 +409,7 @@ for(let element of array){
 
 ## Default values
 
-When creating a constructor and you wanted a default value, you previously had to write something like this:
+When creating a function and you wanted a default value, you previously had to write something like this:
 
 ```JavaScript
 var multBy2 = function(value){
@@ -494,7 +497,9 @@ The rest operator gathers many values into an array.  It's basically the opposit
 
 ```JavaScript
 function returnOnlyNums(...arrayParam){
-    var nums = arrayParam.filter(arg => typeof arg === 'number');
+    var nums = arrayParam.filter(function(currentElement){
+        return typeof currentElement === 'number'
+    })
     return nums;
 }
 
@@ -688,9 +693,7 @@ console.log(b); // 7
 Pull variables out of an object
 
 ```JavaScript
-var p, q;
-
-{p, q} = {p: 42, q: true};
+var {p, q} = {p: 42, q: true};
 
 console.log(p); // 42
 console.log(q); // true
@@ -737,7 +740,7 @@ console.log('userId: ' + userId(user)); // "userId: 42"
 Use this for default options arguments:
 
 ```JavaScript
-function drawES2015Chart({size = 'big', cords = {x: 0, y: 0}, radius = 25} = {}) {
+function drawES2015Chart({size = 'big', cords = {x: 0, y: 0}, radius = 25}) {
     console.log(size, cords, radius);
 }
 
