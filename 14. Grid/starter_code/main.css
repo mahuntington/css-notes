@@ -1,0 +1,48 @@
+div {
+  border: 1px black solid;
+}
+
+.container {
+}
+
+#item1 {
+
+
+  border-color: red;
+  background-color: rgb(255, 225, 225);
+}
+
+#item2 {
+
+
+  border-color: green;
+  background-color: darkseagreen;
+}
+
+#item3 {
+
+
+  border-color: blue;
+  background-color: PowderBlue;
+}
+
+#item4 {
+
+
+  border-color: yellow;
+  background-color: PaleGoldenRod;
+  }
+
+#item5 {
+
+
+  border-color: orange;
+  background-color: burlywood;
+}
+
+#item6 {
+
+  
+  border-color: brown;
+  background-color: khaki;
+}
